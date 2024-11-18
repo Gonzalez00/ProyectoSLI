@@ -20,7 +20,7 @@ export default function Solicitud(props) {
     lab_disponible: '',
     Estado_lab: 'Disponible',
     motivo: '',
-    imagen: null, // Inicialmente sin imagen
+    imagen: null,
   };
 
   const [state, setState] = useState(initialState);
@@ -74,7 +74,7 @@ export default function Solicitud(props) {
       where('lab_disponible', '==', state.lab_disponible)
     );
     const querySnapshot = await getDocs(q);
-    return querySnapshot.empty; // Verifica si el laboratorio está disponible
+    return querySnapshot.empty;
   };
 
   const crearSolicitud = async () => {
@@ -96,12 +96,10 @@ export default function Solicitud(props) {
       await addDoc(collection(db, 'Solicitud'), {
         ...state,
         Estado_lab: 'Asignado',
-        id_solicitud: uuid.v4(),
       });
 
       Alert.alert("Éxito", "Solicitud creada con éxito.");
 
-      // Restablecer los campos del formulario
     setState(initialState);
       
     } catch (error) {

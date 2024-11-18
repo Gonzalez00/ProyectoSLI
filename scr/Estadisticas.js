@@ -14,7 +14,7 @@ export default function Estadisticas() {
     datasets: [{ data: [0] }]
   });
 
-  // Aquí es donde obtendrás los datos de la colección de "Solicitud"
+  
   useEffect(() => {
     const recibirDatosSolicitud = async () => {
       try {
@@ -31,8 +31,8 @@ export default function Estadisticas() {
         });
 
         setDataSolicitud({
-          labels: labDisponible, // Aquí usas lab_disponible como etiquetas
-          datasets: [{ data: duracionD }] // Aquí usas duracion como los valores
+          labels: labDisponible,
+          datasets: [{ data: duracionD }]
         });
 
       } catch (error) {
@@ -43,7 +43,7 @@ export default function Estadisticas() {
     recibirDatosSolicitud();
   }, []);
 
-  // Generar PDF con los datos de "Solicitud"
+ 
   const generarPDF = async () => {
     try {
       const doc = new jsPDF();
@@ -80,7 +80,7 @@ export default function Estadisticas() {
         width={screenWidth - (screenWidth * 0.1)}
         height={300}
         yAxisLabel="Horas"
-        xAxisLabel='Laboratorios'
+        xAxisLabel='Laboratorio'
         chartConfig={{
           backgroundGradientFrom: "#00FFFF",
           backgroundGradientFromOpacity: 0.1,
@@ -112,7 +112,7 @@ export default function Estadisticas() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFFFFF', // Fondo blanco para el contenedor
+    backgroundColor: '#FFFFFF',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
